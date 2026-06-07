@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0a1a" />
+  <title>Vesmír – Průvodce kosmem</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body class="dark">
+
+  <header>
+    <div class="logo">🌌 COSMOS</div>
+    <nav>
+      <button class="nav-btn active" data-tab="objekty">🪐 Objekty</button>
+      <button class="nav-btn" data-tab="starty">🚀 Starty raket</button>
+      <button class="nav-btn" data-tab="iss">🛸 ISS</button>
+    </nav>
+    <button id="theme-toggle" title="Přepnout téma">🌙</button>
+  </header>
+
+  <main>
+
+    <section id="tab-objekty" class="tab active">
+      <h1>Vesmírné objekty</h1>
+      <p class="subtitle">Najeď myší na objekt pro zobrazení informací</p>
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="vse">Vše</button>
+        <button class="filter-btn" data-filter="planeta">Planety</button>
+        <button class="filter-btn" data-filter="hvezda">Hvězdy</button>
+        <button class="filter-btn" data-filter="cerna-dira">Černé díry</button>
+        <button class="filter-btn" data-filter="jine">Jiné</button>
+        <button class="filter-btn" data-filter="oblibene">⭐ Oblíbené</button>
+      </div>
+      <div class="objekty-grid" id="objekty-grid"></div>
+    </section>
+
+    <section id="tab-starty" class="tab">
+      <h1>Nadcházející starty</h1>
+      <p class="subtitle">Data z The Space Devs API</p>
+      <div class="filter-bar">
+        <label>Společnost:
+          <select id="agency-filter"><option value="">Všechny</option></select>
+        </label>
+        <span id="launches-count"></span>
+      </div>
+      <div id="launches-container"><div class="loading">⏳ Načítám starty...</div></div>
+    </section>
+
+    <section id="tab-iss" class="tab">
+      <h1>Mezinárodní vesmírná stanice</h1>
+      <p class="subtitle">Živá poloha ISS</p>
+      <div class="iss-grid">
+        <div class="iss-info-box">
+          <h3>📍 Aktuální poloha</h3>
+          <div class="iss-stat"><span>Zeměpisná šířka:</span> <strong id="iss-lat">–</strong></div>
+          <div class="iss-stat"><span>Zeměpisná délka:</span> <strong id="iss-lon">–</strong></div>
+          <div class="iss-stat"><span>Rychlost:</span> <strong>~27 600 km/h</strong></div>
+          <div class="iss-stat"><span>Výška nad zemí:</span> <strong>~408 km</strong></div>
+          <button id="refresh-iss" class="btn-primary">🔄 Aktualizovat polohu</button>
+        </div>
+        <div class="iss-info-box">
+          <h3>👨‍🚀 Posádka na ISS</h3>
+          <div id="iss-crew"><div class="loading">⏳ Načítám posádku...</div></div>
+        </div>
+        <div class="iss-info-box wide">
+          <h3>ℹ️ O stanici</h3>
+          <p>Mezinárodní vesmírná stanice (ISS) je obývatelná umělá družice na nízké oběžné dráze Země. Obíhá ve výšce přibližně 408 km nad Zemí rychlostí asi 7,66 km/s a oběh trvá zhruba 92 minut.</p>
+          <p>Stanice slouží jako vědecká laboratoř ve vesmíru – zkoumají se zde účinky mikrogravitace na lidský organismus, provádějí se biologické, fyzikální a astronomické experimenty.</p>
+          <div class="iss-facts">
+            <div class="fact"><strong>🏗️ Délka</strong><br/>109 m</div>
+            <div class="fact"><strong>⚖️ Hmotnost</strong><br/>420 000 kg</div>
+            <div class="fact"><strong>🔋 Solární panely</strong><br/>2 500 m²</div>
+            <div class="fact"><strong>🌍 Obletů/den</strong><br/>~15,5</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <button id="modal-close">✕</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/objekty.js"></script>
+  <script src="js/starty.js"></script>
+  <script src="js/iss.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
